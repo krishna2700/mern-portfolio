@@ -12,7 +12,7 @@ const Intro = () => {
       </h1>
       <p className="text-white w-2/3">
         I am a dedicated Full Stack Developer specializing in the MERN stack
-        (MongoDB, Express.js, React, Node.js) and Next.js. With a passion for
+        (React.js, MongoDB, Express.js, Node.js) and Next.js. With a passion for
         crafting dynamic web applications, I create seamless, visually appealing
         user experiences
       </p>
