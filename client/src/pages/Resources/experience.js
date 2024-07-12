@@ -19,7 +19,7 @@ export const experience = [
     id: 3,
     company: "Margosatree Technologies LLP",
     title: "Frontend Developer",
-    period: "june 2021 - june 2022",
+    period: "June 2021 - June 2022",
     description:
       "I worked as a Front End Developer specializing in HTML, CSS, JavaScript, and React.js. I crafted responsive, user-friendly web interfaces and ensured seamless user experiences. My role involved optimizing performance, maintaining clean code, and collaborating with design teams to implement innovative solutions. I also focused on accessibility and cross-browser compatibility. My experience in React.js allowed me to build dynamic, component-based applications efficiently.",
   },
@@ -27,7 +27,7 @@ export const experience = [
     id: 4,
     company: "Self Employed",
     title: "Freelancer",
-    period: "january 2021 - june 2021",
+    period: "January 2021 - June 2021",
     description:
       "As a freelancer starting out as a frontend developer, I specialized in HTML, CSS, JavaScript, and React.js. I successfully delivered projects including blogs and company websites, focusing on creating responsive, visually appealing interfaces. My role involved translating client requirements into functional designs and ensuring user-friendly experiences across various platforms.",
   },
