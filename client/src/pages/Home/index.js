@@ -7,6 +7,7 @@ import ProjectsFile from "./Projects";
 import Education from "./Education";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import LeftSider from "./LeftSider";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
         <Education />
         <Contact />
         <Footer />
+        <LeftSider />
       </div>
     </div>
   );
