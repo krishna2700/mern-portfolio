@@ -20,3 +20,51 @@
   background: #013f3c7f;
   border-radius: 10px;
 }
+
+/* loader animation */
+
+.j {
+  animation: j 1s infinite;
+}
+
+@keyframes j {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+.s {
+  animation: s 1s infinite;
+}
+
+@keyframes s {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+.n {
+  animation: n 1s infinite;
+}
+
+@keyframes n {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
