@@ -17,9 +17,9 @@ const About = () => {
   ];
 
   return (
-    <div className="px-5 md:px-5 lg:px-0 py-5 md:py-5">
+    <div className="py-5">
       <SectionTitle title="About" />
-      <div className="flex flex-col lg:flex-row w-full items-center gap-5 lg:gap-10">
+      <div className="flex flex-col lg:flex-row items-center gap-5 lg:gap-10">
         <div className="h-[50vh] lg:h-[70vh] w-full lg:w-1/2">
           <lottie-player
             src="https://lottie.host/a7302146-aee7-4548-a349-202cdaed7e5b/VheB8hiPjR.json"
@@ -29,7 +29,7 @@ const About = () => {
             autoplay
           ></lottie-player>
         </div>
-        <div className="flex flex-col gap-5 lg:gap-10 w-full lg:w-1/2 px-5 lg:px-0">
+        <div className="flex flex-col gap-5 lg:gap-10 w-full lg:w-1/2">
           <p className="text-white">
             Hi, I'm Krishna Ruparelia, a passionate MERN Stack Developer. I
             thrive on continuously updating my skills and learning new

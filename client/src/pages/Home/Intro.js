@@ -6,13 +6,13 @@ const Intro = () => {
       <h1 className="text-white text-4xl sm:text-3xl font-semibold">
         Hi, I am
       </h1>
-      <h1 className="text-secondary text-3xl sm:text-8xl font-semibold">
+      <h1 className="text-secondary text-3xl sm:text-5xl lg:text-6xl font-semibold">
         Krishna Rajan Ruparelia
       </h1>
-      <h1 className="text-white text-2xl sm:text-6xl font-semibold">
+      <h1 className="text-white text-2xl sm:text-4xl lg:text-5xl font-semibold">
         I build things for the web
       </h1>
-      <p className="text-white text-base sm:text-xl lg:w-2/3 mt-5">
+      <p className="text-white text-base sm:text-lg lg:w-2/3 mt-5">
         I am a dedicated Full Stack Developer specializing in the MERN stack
         (React.js, MongoDB, Express.js, Node.js) and Next.js. With a passion for
         crafting dynamic web applications, I create seamless, visually appealing

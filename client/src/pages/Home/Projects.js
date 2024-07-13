@@ -6,7 +6,7 @@ const ProjectsFile = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   return (
-    <div className="px-1 py-5">
+    <div className="py-5">
       <SectionTitle title="Projects" />
       <div className="flex flex-col lg:flex-row py-5 gap-5 lg:gap-10">
         <div className="flex flex-col gap-5 lg:gap-10 border-l-2 border-[#639169] w-full lg:w-1/3">
@@ -23,7 +23,9 @@ const ProjectsFile = () => {
                     : "text-white"
                 } `}
               >
-                {pro.project}
+                <span className="block lg:min-w-[200px] whitespace-nowrap overflow-hidden overflow-ellipsis">
+                  {pro.project}
+                </span>
               </h1>
             </div>
           ))}

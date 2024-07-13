@@ -6,7 +6,7 @@ const Experience = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   return (
-    <div className="px-1 py-5">
+    <div className="py-5">
       <SectionTitle title="Experience" />
       <div className="flex flex-col lg:flex-row py-5 gap-5 lg:gap-10">
         <div className="flex flex-col gap-5 lg:gap-10 border-l-2 border-[#639169] w-full lg:w-1/3">
@@ -23,7 +23,7 @@ const Experience = () => {
                     : "text-white"
                 } `}
               >
-                {exp.period}
+                <span className="block lg:min-w-[200px]">{exp.period}</span>
               </h1>
             </div>
           ))}
