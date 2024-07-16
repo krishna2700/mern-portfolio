@@ -128,6 +128,10 @@ const contactSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  lottieURL: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = {
