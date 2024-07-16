@@ -82,6 +82,14 @@ const projectsSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  project: {
+    type: String,
+    required: true,
+  },
+  link: {
+    type: String,
+    required: true,
+  },
 });
 
 const educationSchema = new mongoose.Schema({
