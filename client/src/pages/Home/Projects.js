@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import SectionTitle from "../../components/SectionTitle";
-import { Projects } from "../../pages/Resources/Projects";
 
 const ProjectsFile = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const portfolioData = useSelector((state) => state.root.portfolioData);
+  console.log(portfolioData);
+  if (!portfolioData || !portfolioData.project) {
+    return null;
+  }
+
+  const Projects = portfolioData.project;
+
+  console.log(Projects);
 
   return (
     <div className="py-5">

@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import SectionTitle from "../../components/SectionTitle";
-import { experience } from "../../pages/Resources/experience";
 
 const Experience = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const portfolioData = useSelector((state) => state.root.portfolioData);
+
+  if (!portfolioData || !portfolioData.experience) {
+    return null;
+  }
+
+  const experience = portfolioData.experience;
 
   return (
     <div className="py-5">

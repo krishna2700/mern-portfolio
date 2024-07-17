@@ -8,21 +8,29 @@ import Education from "./Education";
 import Contact from "./Contact";
 import Footer from "./Footer";
 import LeftSider from "./LeftSider";
+import { useSelector } from "react-redux";
+import Loader from "../../components/Loader";
 
 const Home = () => {
+  const { loading, portfolioData } = useSelector((state) => state.root);
+
   return (
     <div>
       <Header />
-      <div className="bg-primary px-5 md:px-10 lg:px-40">
-        <Intro />
-        <About />
-        <Experience />
-        <ProjectsFile />
-        <Education />
-        <Contact />
-        <Footer />
-        <LeftSider />
-      </div>
+      {portfolioData ? (
+        <div className="bg-primary px-5 md:px-10 lg:px-40">
+          <Intro />
+          <About />
+          <Experience />
+          <ProjectsFile />
+          <Education />
+          <Contact />
+          <Footer />
+          <LeftSider />
+        </div>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

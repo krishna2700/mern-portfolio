@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import SectionTitle from "../../components/SectionTitle";
-import { education } from "../../pages/Resources/education";
+import { useSelector } from "react-redux";
 
 const Education = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const portfolioData = useSelector((state) => state.root.portfolioData);
+
+  if (!portfolioData || !portfolioData.education) {
+    return null;
+  }
+
+  const education = portfolioData.education;
 
   return (
     <div className="py-5">
@@ -23,14 +30,14 @@ const Education = () => {
                     : "text-white"
                 }`}
               >
-                <span className="block lg:min-w-[200px]">{edu.company}</span>
+                <span className="block lg:min-w-[200px]">{edu.school}</span>
               </h1>
             </div>
           ))}
         </div>
         <div className="flex flex-col gap-3 lg:gap-5 w-full lg:w-2/3">
           <h1 className="text-secondary text-xl md:text-2xl">
-            {education[selectedItemIndex].company}
+            {education[selectedItemIndex].school}
           </h1>
           <h1 className="text-tertiary text-xl md:text-2xl">
             {education[selectedItemIndex].title}
