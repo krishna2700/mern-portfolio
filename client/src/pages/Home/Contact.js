@@ -7,7 +7,7 @@ const Contact = () => {
   const contact = portfolioData?.contact || {};
   console.log(contact);
   const filteredContact = Object.keys(contact)
-    .filter((key) => key !== "_id")
+    .filter((key) => key !== "_id" && key !== "lottieURL")
     .reduce((obj, key) => {
       obj[key] = contact[key];
       return obj;
