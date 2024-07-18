@@ -10,6 +10,12 @@ const About = () => {
   }
 
   const { lottieURL, description1, description2, skills } = portfolioData.about;
+  const skillsArray =
+    Array.isArray(skills) && skills.length > 0
+      ? skills[0].split(",").map((skill) => skill.trim())
+      : [];
+
+  console.log(skillsArray);
 
   return (
     <div className="py-5">
@@ -34,7 +40,7 @@ const About = () => {
           Here are a few technologies that I’ve been working with recently:
         </h1>
         <div className="flex flex-wrap gap-5 md:gap-10 mt-5">
-          {skills.map((skill, index) => (
+          {skillsArray.map((skill, index) => (
             <div
               key={index}
               className="border border-tertiary py-2 px-4 md:py-3 md:px-5"

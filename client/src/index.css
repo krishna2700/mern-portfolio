@@ -68,3 +68,31 @@
     opacity: 1;
   }
 }
+
+/* Input */
+input,
+textarea {
+  border: 1px solid gray;
+  width: 100%;
+  padding-left: 20px;
+}
+
+input {
+  height: 40px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solidrgb(87, 86, 86) y;
+}
+
+/* textarea */
+textarea {
+  height: 150px;
+  padding-top: 12px;
+}
+
+textarea:focus {
+  outline: none;
+  border: 2px solidrgb(87, 86, 86) y;
+}
