@@ -1,8 +1,8 @@
 import { Form, message } from "antd";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ShowLoading, HideLoading } from "../../Redux/rootSlice";
 import axios from "axios";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { HideLoading, ShowLoading } from "../../Redux/rootSlice";
 
 const AdminIntro = () => {
   const dispatch = useDispatch();

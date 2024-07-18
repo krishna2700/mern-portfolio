@@ -1,8 +1,8 @@
 import { Form, message } from "antd";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ShowLoading, HideLoading } from "../../Redux/rootSlice";
 import axios from "axios";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { HideLoading, ShowLoading } from "../../Redux/rootSlice";
 
 const AdminAbout = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,13 @@ const AdminAbout = () => {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
+      values.skills =
+        typeof values.skills === "string"
+          ? values.skills
+              .split(",")
+              .map((skill) => skill.trim())
+              .join(", ")
+          : values.skills;
       const res = await axios.post("/api/portfolio/update-about", {
         ...values,
         _id: portfolioData.about._id,
@@ -32,13 +39,20 @@ const AdminAbout = () => {
     return <div>Loading...</div>;
   }
 
+  const initialValues = {
+    ...portfolioData.about,
+    skills:
+      typeof portfolioData.about.skills === "string"
+        ? portfolioData.about.skills
+            .split(",")
+            .map((skill) => skill.trim())
+            .join(", ")
+        : portfolioData.about.skills,
+  };
+
   return (
     <div>
-      <Form
-        onFinish={onFinish}
-        layout="vertical"
-        initialValues={portfolioData.about}
-      >
+      <Form onFinish={onFinish} layout="vertical" initialValues={initialValues}>
         <Form.Item name="lottieURL" label="URL">
           <input placeholder="URL" />
         </Form.Item>
