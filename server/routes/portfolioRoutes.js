@@ -81,4 +81,38 @@ router.post("/add-experience", async (req, res) => {
   }
 });
 
+// ? Update Portfolio Data Experience
+router.post("/update-experience", async (req, res) => {
+  try {
+    const updateExperience = await experience.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: updateExperience,
+      success: true,
+      message: "Experience Data Updated Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? Delete Portfolio Data Experience
+router.post("/delete-experience", async (req, res) => {
+  try {
+    const deleteExperience = await experience.findOneAndDelete({
+      _id: req.body._id,
+    });
+    res.status(200).send({
+      data: deleteExperience,
+      success: true,
+      message: "Experience Data Deleted Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;

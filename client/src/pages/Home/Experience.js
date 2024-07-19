@@ -6,8 +6,12 @@ const Experience = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const portfolioData = useSelector((state) => state.root.portfolioData);
 
-  if (!portfolioData || !portfolioData.experience) {
-    return null;
+  if (
+    !portfolioData ||
+    !portfolioData.experience ||
+    portfolioData.experience.length === 0
+  ) {
+    return <div>No Experience Data Available</div>;
   }
 
   const experience = portfolioData.experience;
@@ -36,15 +40,19 @@ const Experience = () => {
           ))}
         </div>
         <div className="flex flex-col gap-3 lg:gap-5 w-full lg:w-2/3">
-          <h1 className="text-secondary text-xl md:text-2xl">
-            {experience[selectedItemIndex].title}
-          </h1>
-          <h1 className="text-tertiary text-xl md:text-2xl">
-            {experience[selectedItemIndex].company}
-          </h1>
-          <p className="text-white text-sm md:text-base">
-            {experience[selectedItemIndex].description}
-          </p>
+          {experience[selectedItemIndex] && (
+            <>
+              <h1 className="text-secondary text-xl md:text-2xl">
+                {experience[selectedItemIndex].title}
+              </h1>
+              <h1 className="text-tertiary text-xl md:text-2xl">
+                {experience[selectedItemIndex].company}
+              </h1>
+              <p className="text-white text-sm md:text-base">
+                {experience[selectedItemIndex].description}
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>
