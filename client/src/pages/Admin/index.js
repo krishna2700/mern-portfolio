@@ -7,35 +7,48 @@ import Loader from "../../components/Loader";
 import { useSelector } from "react-redux";
 import ExperirnceAbout from "./ExperirnceAbout";
 
-const { TabPane } = Tabs;
-
 const Admin = () => {
   const { loading, portfolioData } = useSelector((state) => state.root);
+
+  const tabItems = [
+    {
+      key: "1",
+      label: "Intro",
+      children: <AdminIntro />,
+    },
+    {
+      key: "2",
+      label: "Abouts",
+      children: <AdminAbout />,
+    },
+    {
+      key: "3",
+      label: "Projects",
+      children: <p>Projects Content</p>,
+    },
+    {
+      key: "4",
+      label: "Experience",
+      children: <ExperirnceAbout />,
+    },
+    {
+      key: "5",
+      label: "Education",
+      children: <p>Education Content</p>,
+    },
+    {
+      key: "6",
+      label: "Courses",
+      children: <p>Courses Content</p>,
+    },
+  ];
+
   return (
     <div>
       <Header />
       {portfolioData ? (
         <div className="mt-5 p-5">
-          <Tabs defaultActiveKey="1">
-            <TabPane tab="Intro" key="1">
-              <AdminIntro />
-            </TabPane>
-            <TabPane tab="Abouts" key="2">
-              <AdminAbout />
-            </TabPane>
-            <TabPane tab="Projects" key="3">
-              <p>Projects Content</p>
-            </TabPane>
-            <TabPane tab="Experience" key="4">
-              <ExperirnceAbout />
-            </TabPane>
-            <TabPane tab="Education" key="5">
-              <p>Education Content</p>
-            </TabPane>
-            <TabPane tab="Courses" key="6">
-              <p>Courses Content</p>
-            </TabPane>
-          </Tabs>
+          <Tabs defaultActiveKey="1" items={tabItems} />
         </div>
       ) : (
         <Loader />

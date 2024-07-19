@@ -1,13 +1,36 @@
 import { Form, message } from "antd";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ShowLoading } from "../../Redux/rootSlice";
 
 const AdminAbout = () => {
   const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
-  console.log(portfolioData);
+  const resizeObserverRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      console.log("Resize observed");
+    };
+
+    const initializeResizeObserver = () => {
+      resizeObserverRef.current = new ResizeObserver(handleResize);
+
+      const formContainer = document.querySelector("#formContainer");
+      if (formContainer) {
+        resizeObserverRef.current.observe(formContainer);
+      }
+    };
+
+    initializeResizeObserver();
+
+    return () => {
+      if (resizeObserverRef.current) {
+        resizeObserverRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const onFinish = async (values) => {
     try {
@@ -52,7 +75,12 @@ const AdminAbout = () => {
 
   return (
     <div>
-      <Form onFinish={onFinish} layout="vertical" initialValues={initialValues}>
+      <Form
+        id="formContainer"
+        onFinish={onFinish}
+        layout="vertical"
+        initialValues={initialValues}
+      >
         <Form.Item name="lottieURL" label="URL">
           <input placeholder="URL" />
         </Form.Item>

@@ -1,12 +1,13 @@
-import React from "react";
+import { Form, Modal } from "antd";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const ExperirnceAbout = () => {
   const { portfolioData } = useSelector((state) => state.root);
-  console.log(portfolioData);
   const dispatch = useDispatch();
   const { experience } = portfolioData;
-  console.log(experience);
+  const [showAddEditModel, setShowAddEditModel] = useState(false);
+  const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
   return (
     <div>
       <div className="grid grid-cols-4 gap-5">
@@ -26,6 +27,26 @@ const ExperirnceAbout = () => {
           </div>
         ))}
       </div>
+      <Modal
+        open={showAddEditModel}
+        title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+        onCancel={() => setShowAddEditModel(false)}
+      >
+        <Form layout="vertical">
+          <Form.Item name="period" label="Period">
+            <input placeholder="Period" />
+          </Form.Item>
+          <Form.Item name="company" label="Company">
+            <input />
+          </Form.Item>
+          <Form.Item name="title" label="Role">
+            <input />
+          </Form.Item>
+          <Form.Item name="description" label="Description">
+            <input />
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 };
