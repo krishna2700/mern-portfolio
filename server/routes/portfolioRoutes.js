@@ -67,4 +67,18 @@ router.post("/update-about", async (req, res) => {
   }
 });
 
+// ? add Portfolio Data Experience
+router.post("/add-experience", async (req, res) => {
+  try {
+    const newExperience = await experience.create(req.body);
+    res.status(200).send({
+      data: newExperience,
+      success: true,
+      message: "New Experience Added Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;
