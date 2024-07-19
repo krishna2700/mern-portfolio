@@ -115,4 +115,118 @@ router.post("/delete-experience", async (req, res) => {
   }
 });
 
+// ? add Portfolio Data Projects
+router.post("/add-projects", async (req, res) => {
+  try {
+    const newProjects = await projects.create(req.body);
+    res.status(200).send({
+      data: newProjects,
+      success: true,
+      message: "New Projects Added Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? Update Portfolio Data Projects
+router.post("/update-projects", async (req, res) => {
+  try {
+    const updateProjects = await projects.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: updateProjects,
+      success: true,
+      message: "Projects Data Updated Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? Delete Portfolio Data Projects
+router.post("/delete-projects", async (req, res) => {
+  try {
+    const deleteProjects = await projects.findOneAndDelete({
+      _id: req.body._id,
+    });
+    res.status(200).send({
+      data: deleteProjects,
+      success: true,
+      message: "Projects Data Deleted Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? add Portfolio Data Education
+router.post("/add-education", async (req, res) => {
+  try {
+    const newEducation = await education.create(req.body);
+    res.status(200).send({
+      data: newEducation,
+      success: true,
+      message: "New Education Added Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? Update Portfolio Data Education
+router.post("/update-education", async (req, res) => {
+  try {
+    const updateEducation = await education.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: updateEducation,
+      success: true,
+      message: "Education Data Updated Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? Delete Portfolio Data Education
+router.post("/delete-education", async (req, res) => {
+  try {
+    const deleteEducation = await education.findOneAndDelete({
+      _id: req.body._id,
+    });
+    res.status(200).send({
+      data: deleteEducation,
+      success: true,
+      message: "Education Data Deleted Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+// ? update Portfolio Data contact
+router.post("/update-contact", async (req, res) => {
+  try {
+    const updateContact = await contact.findOneAndUpdate(
+      { _id: req.body._id },
+      req.body,
+      { new: true }
+    );
+    res.status(200).send({
+      data: updateContact,
+      success: true,
+      message: "Contact Data Updated Successfully",
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 module.exports = router;

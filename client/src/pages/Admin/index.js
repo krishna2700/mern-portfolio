@@ -5,7 +5,10 @@ import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import AdminAbout from "./AdminAbout";
 import AdminIntro from "./AdminIntro";
-import ExperirnceAbout from "./ExperirnceAbout";
+import AdminExperience from "./AdminExperience";
+import AdminProjects from "./AdminProjects";
+import AdminEducation from "./AdminEducation";
+import AdminContact from "./AdminContact";
 
 const Admin = () => {
   const { portfolioData } = useSelector((state) => state.root);
@@ -24,22 +27,22 @@ const Admin = () => {
     {
       key: "3",
       label: "Projects",
-      children: <p>Projects Content</p>,
+      children: <AdminProjects />,
     },
     {
       key: "4",
       label: "Experience",
-      children: <ExperirnceAbout />,
+      children: <AdminExperience />,
     },
     {
       key: "5",
       label: "Education",
-      children: <p>Education Content</p>,
+      children: <AdminEducation />,
     },
     {
       key: "6",
-      label: "Courses",
-      children: <p>Courses Content</p>,
+      label: "Contact",
+      children: <AdminContact />,
     },
   ];
 

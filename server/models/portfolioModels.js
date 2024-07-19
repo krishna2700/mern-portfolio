@@ -76,11 +76,11 @@ const projectsSchema = new mongoose.Schema({
   },
   link: {
     type: String,
-    required: true,
+    required: false,
   },
   techStack: {
     type: Array,
-    required: true,
+    required: false,
   },
   project: {
     type: String,

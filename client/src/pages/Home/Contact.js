@@ -33,7 +33,10 @@ const Contact = () => {
         </div>
         <div className="h-[30vh] lg:h-[50vh] w-full lg:w-1/2">
           <lottie-player
-            src={contact.lottieURL}
+            src={
+              contact.lottieURL ||
+              "https://lottie.host/2cb03ada-8c98-495c-b09d-44dc2e66d733/AEpEbx3bIg.json"
+            }
             background="transparent"
             speed="1"
             loop

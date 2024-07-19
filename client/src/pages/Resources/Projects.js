@@ -1,4 +1,4 @@
-export const Projects = [
+[
   {
     techStack: [],
     project: "E-commerce",

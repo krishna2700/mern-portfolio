@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ReloadData, ShowLoading } from "../../Redux/rootSlice";
 
-const ExperienceAbout = () => {
+const AdminProjects = () => {
   const { portfolioData, reloadData } = useSelector((state) => state.root);
   const dispatch = useDispatch();
-  const { experience } = portfolioData;
+  const { project } = portfolioData;
   const [showAddEditModel, setShowAddEditModel] = useState(false);
   const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
   const [form] = Form.useForm();
@@ -25,12 +25,12 @@ const ExperienceAbout = () => {
       dispatch(ShowLoading());
       let res;
       if (selectedItemForEdit) {
-        res = await axios.post("/api/portfolio/update-experience", {
+        res = await axios.post("/api/portfolio/update-projects", {
           ...values,
           _id: selectedItemForEdit._id,
         });
       } else {
-        res = await axios.post("/api/portfolio/add-experience", values);
+        res = await axios.post("/api/portfolio/add-projects", values);
       }
       dispatch(HideLoading());
       if (res.data.success) {
@@ -51,7 +51,7 @@ const ExperienceAbout = () => {
   const handleDelete = async (item) => {
     try {
       dispatch(ShowLoading());
-      const res = await axios.post("/api/portfolio/delete-experience", {
+      const res = await axios.post("/api/portfolio/delete-projects", {
         _id: item._id,
       });
       dispatch(HideLoading());
@@ -71,7 +71,14 @@ const ExperienceAbout = () => {
     setSelectedItemForEdit(item);
     setShowAddEditModel(true);
     form.setFieldsValue(
-      item || { period: "", company: "", title: "", description: "" }
+      item || {
+        project: "",
+        title: "",
+        description: "",
+        image: "",
+        link: "",
+        techStack: [],
+      }
     );
   };
 
@@ -82,40 +89,49 @@ const ExperienceAbout = () => {
   };
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8 bg-gray-50 min-h-screen">
       <div className="flex justify-end mb-4">
         <button
           className="bg-primary text-white px-4 py-2 sm:px-5 sm:py-3 rounded"
           onClick={() => handleModalOpen()}
         >
-          Add Experience
+          Add Project
         </button>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {experience?.map((exp) => (
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {project?.map((pro) => (
           <div
-            key={exp._id}
-            className="shadow-md border p-4 sm:p-5 border-gray-300 rounded flex flex-col gap-2"
+            key={pro._id}
+            className="shadow-lg border p-6 border-gray-200 rounded-lg flex flex-col gap-4 bg-white hover:shadow-xl transition-all"
           >
-            <h1 className="text-primary text-lg sm:text-xl font-bold">
-              {exp.period}
-            </h1>
+            <h1 className="text-blue-600 text-xl font-bold">{pro.title}</h1>
             <hr />
-            <h1 className="text-base sm:text-lg">Company: {exp.company}</h1>
-            <h1 className="text-base sm:text-lg">Role: {exp.title}</h1>
-            <h1 className="text-base sm:text-lg">
-              Description: {exp.description}
+            <h1 className="text-lg font-semibold">Project: {pro.project}</h1>
+            <h1 className="text-base">Description: {pro.description}</h1>
+            <img
+              src={pro.image}
+              alt={pro.title}
+              className="w-full h-32 object-cover rounded-md"
+            />
+            <h1 className="text-base">
+              Link:{" "}
+              <a href={pro.link} target="_blank" rel="noopener noreferrer">
+                {pro.link}
+              </a>
+            </h1>
+            <h1 className="text-base">
+              Tech Stack: {pro.techStack.join(", ")}
             </h1>
             <div className="flex justify-end gap-2 mt-4">
               <button
                 className="bg-red-500 text-white px-3 py-1 sm:px-4 sm:py-2 rounded"
-                onClick={() => handleDelete(exp)}
+                onClick={() => handleDelete(pro)}
               >
                 Delete
               </button>
               <button
                 className="bg-primary text-white px-3 py-1 sm:px-4 sm:py-2 rounded"
-                onClick={() => handleModalOpen(exp)}
+                onClick={() => handleModalOpen(pro)}
               >
                 Edit
               </button>
@@ -125,19 +141,16 @@ const ExperienceAbout = () => {
       </div>
       <Modal
         open={showAddEditModel}
-        title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+        title={selectedItemForEdit ? "Edit Project" : "Add Project"}
         onCancel={handleModalClose}
         footer={null}
         className="relative"
       >
         <Form layout="vertical" form={form} onFinish={onFinish}>
-          <Form.Item name="period" label="Period">
-            <input className="w-full p-2 border rounded" placeholder="Period" />
-          </Form.Item>
-          <Form.Item name="company" label="Company">
+          <Form.Item name="project" label="Project">
             <input
               className="w-full p-2 border rounded"
-              placeholder="Company"
+              placeholder="Project"
             />
           </Form.Item>
           <Form.Item name="title" label="Title">
@@ -147,6 +160,24 @@ const ExperienceAbout = () => {
             <input
               className="w-full p-2 border rounded"
               placeholder="Description"
+            />
+          </Form.Item>
+          <Form.Item name="image" label="Image URL">
+            <input
+              className="w-full p-2 border rounded"
+              placeholder="Image URL"
+            />
+          </Form.Item>
+          <Form.Item name="link" label="Project Link">
+            <input
+              className="w-full p-2 border rounded"
+              placeholder="Project Link"
+            />
+          </Form.Item>
+          <Form.Item name="techStack" label="Tech Stack">
+            <input
+              className="w-full p-2 border rounded"
+              placeholder="Tech Stack (comma separated)"
             />
           </Form.Item>
           <div className="flex justify-end gap-2">
@@ -169,4 +200,4 @@ const ExperienceAbout = () => {
   );
 };
 
-export default ExperienceAbout;
+export default AdminProjects;
