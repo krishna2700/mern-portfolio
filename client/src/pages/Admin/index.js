@@ -1,14 +1,14 @@
-import React from "react";
-import Header from "../../components/Header";
 import { Tabs } from "antd";
-import AdminIntro from "./AdminIntro";
-import AdminAbout from "./AdminAbout";
-import Loader from "../../components/Loader";
+import React from "react";
 import { useSelector } from "react-redux";
+import Header from "../../components/Header";
+import Loader from "../../components/Loader";
+import AdminAbout from "./AdminAbout";
+import AdminIntro from "./AdminIntro";
 import ExperirnceAbout from "./ExperirnceAbout";
 
 const Admin = () => {
-  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { portfolioData } = useSelector((state) => state.root);
 
   const tabItems = [
     {

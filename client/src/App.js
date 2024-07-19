@@ -1,16 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import { useEffect, useState } from "react";
-import Loader from "./components/Loader";
 import axios from "axios";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ReloadData, setPortfolioData } from "./Redux/rootSlice";
+import Loader from "./components/Loader";
 import Admin from "./pages/Admin";
+import Home from "./pages/Home";
 
 function App() {
-  const { loading, portfolioData, reloadData } = useSelector(
-    (state) => state.root
-  );
+  const { loading, reloadData } = useSelector((state) => state.root);
   const dispatch = useDispatch();
 
   const getPortfolioData = async () => {

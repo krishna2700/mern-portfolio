@@ -1,18 +1,18 @@
 import React from "react";
-import Intro from "./Intro";
-import Header from "../../components/Header";
-import About from "./About";
-import Experience from "./Experience";
-import ProjectsFile from "./Projects";
-import Education from "./Education";
-import Contact from "./Contact";
-import Footer from "./Footer";
-import LeftSider from "./LeftSider";
 import { useSelector } from "react-redux";
+import Header from "../../components/Header";
 import Loader from "../../components/Loader";
+import About from "./About";
+import Contact from "./Contact";
+import Education from "./Education";
+import Experience from "./Experience";
+import Footer from "./Footer";
+import Intro from "./Intro";
+import LeftSider from "./LeftSider";
+import ProjectsFile from "./Projects";
 
 const Home = () => {
-  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { portfolioData } = useSelector((state) => state.root);
 
   return (
     <div>
