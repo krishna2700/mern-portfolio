@@ -6,6 +6,7 @@ import { ReloadData, setPortfolioData } from "./Redux/rootSlice";
 import Loader from "./components/Loader";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
+import Login from "./pages/Admin/Login";
 
 function App() {
   const { loading, reloadData } = useSelector((state) => state.root);
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin-login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

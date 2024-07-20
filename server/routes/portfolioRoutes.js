@@ -7,6 +7,7 @@ const {
   education,
   contact,
 } = require("../models/portfolioModels");
+const User = require("../models/userModels");
 
 // ? Get Portfolio Data
 router.get("/get-portfolio-data", async (req, res) => {
@@ -224,6 +225,31 @@ router.post("/update-contact", async (req, res) => {
       success: true,
       message: "Contact Data Updated Successfully",
     });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+// ? Admin login
+router.post("/admin-login", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      username: req.body.username,
+      password: req.body.password,
+    });
+    user.password = "";
+    if (user) {
+      res.status(200).send({
+        data: user,
+        success: true,
+        message: "Login Successfully",
+      });
+    } else {
+      res.status(200).send({
+        data: user,
+        success: false,
+        message: "Invalid Credentials",
+      });
+    }
   } catch (error) {
     res.status(500).send(error);
   }
