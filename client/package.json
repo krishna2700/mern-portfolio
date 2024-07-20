@@ -44,5 +44,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.4"
   },
-  "proxy": "http://localhost:3690/"
+  "proxy": "https://mern-portfolio-server-tbif.onrender.com/"
 }
