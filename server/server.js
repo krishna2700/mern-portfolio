@@ -7,10 +7,7 @@ const portfolioRoutes = require("./routes/portfolioRoutes");
 
 const app = express();
 
-const whitelist = [
-  "http://localhost:3000",
-  "https://mern-portfolio-client-rt8c.onrender.com",
-];
+const whitelist = ["https://mern-portfolio-client-rt8c.onrender.com"];
 
 const corsOptions = {
   origin: (origin, callback) => {
