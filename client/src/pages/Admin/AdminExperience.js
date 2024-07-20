@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ReloadData, ShowLoading } from "../../Redux/rootSlice";
+import API_URL from "../../config/api";
 
 const AdminExperience = () => {
   const { portfolioData, reloadData } = useSelector((state) => state.root);
@@ -25,12 +26,15 @@ const AdminExperience = () => {
       dispatch(ShowLoading());
       let res;
       if (selectedItemForEdit) {
-        res = await axios.post("/api/portfolio/update-experience", {
+        res = await axios.post(`${API_URL}/api/portfolio/update-experience`, {
           ...values,
           _id: selectedItemForEdit._id,
         });
       } else {
-        res = await axios.post("/api/portfolio/add-experience", values);
+        res = await axios.post(
+          `${API_URL}/api/portfolio/add-experience`,
+          values
+        );
       }
       dispatch(HideLoading());
       if (res.data.success) {
@@ -51,9 +55,12 @@ const AdminExperience = () => {
   const handleDelete = async (item) => {
     try {
       dispatch(ShowLoading());
-      const res = await axios.post("/api/portfolio/delete-experience", {
-        _id: item._id,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/portfolio/delete-experience`,
+        {
+          _id: item._id,
+        }
+      );
       dispatch(HideLoading());
       if (res.data.success) {
         message.success(res.data.message);

@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { HideLoading, ShowLoading } from "../../Redux/rootSlice";
 import { useDispatch } from "react-redux";
+import API_URL from "../../config/api";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -13,7 +14,10 @@ const Login = () => {
   const login = async () => {
     try {
       dispatch(ShowLoading());
-      const response = await axios.post("/api/portfolio/admin-login", user);
+      const response = await axios.post(
+        `${API_URL}/api/portfolio/admin-login`,
+        user
+      );
       dispatch(HideLoading());
       if (response.data.success) {
         message.success(response.data.message);

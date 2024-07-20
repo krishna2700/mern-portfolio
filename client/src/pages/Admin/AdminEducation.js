@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ReloadData, ShowLoading } from "../../Redux/rootSlice";
+import API_URL from "../../config/api";
 
 const AdminEducation = () => {
   const { portfolioData, reloadData } = useSelector((state) => state.root);
@@ -25,12 +26,15 @@ const AdminEducation = () => {
       dispatch(ShowLoading());
       let res;
       if (selectedItemForEdit) {
-        res = await axios.post("/api/portfolio/update-education", {
+        res = await axios.post(`${API_URL}/api/portfolio/update-education`, {
           ...values,
           _id: selectedItemForEdit._id,
         });
       } else {
-        res = await axios.post("/api/portfolio/add-education", values);
+        res = await axios.post(
+          `${API_URL}/api/portfolio/add-education`,
+          values
+        );
       }
       dispatch(HideLoading());
       if (res.data.success) {
@@ -51,9 +55,12 @@ const AdminEducation = () => {
   const handleDelete = async (item) => {
     try {
       dispatch(ShowLoading());
-      const res = await axios.post("/api/portfolio/delete-education", {
-        _id: item._id,
-      });
+      const res = await axios.post(
+        `${API_URL}/api/portfolio/delete-education`,
+        {
+          _id: item._id,
+        }
+      );
       dispatch(HideLoading());
       if (res.data.success) {
         message.success(res.data.message);

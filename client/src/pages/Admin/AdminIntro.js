@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ShowLoading } from "../../Redux/rootSlice";
+import API_URL from "../../config/api";
 
 const AdminIntro = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const AdminIntro = () => {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const res = await axios.post("/api/portfolio/update-intro", {
+      const res = await axios.post(`${API_URL}/api/portfolio/update-intro`, {
         ...values,
         _id: portfolioData.intro._id,
       });

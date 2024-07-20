@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ReloadData, ShowLoading } from "../../Redux/rootSlice";
+import API_URL from "../../config/api";
 
 const AdminProjects = () => {
   const { portfolioData, reloadData } = useSelector((state) => state.root);
@@ -25,12 +26,12 @@ const AdminProjects = () => {
       dispatch(ShowLoading());
       let res;
       if (selectedItemForEdit) {
-        res = await axios.post("/api/portfolio/update-projects", {
+        res = await axios.post(`${API_URL}/api/portfolio/update-projects`, {
           ...values,
           _id: selectedItemForEdit._id,
         });
       } else {
-        res = await axios.post("/api/portfolio/add-projects", values);
+        res = await axios.post(`${API_URL}/api/portfolio/add-projects`, values);
       }
       dispatch(HideLoading());
       if (res.data.success) {
@@ -51,7 +52,7 @@ const AdminProjects = () => {
   const handleDelete = async (item) => {
     try {
       dispatch(ShowLoading());
-      const res = await axios.post("/api/portfolio/delete-projects", {
+      const res = await axios.post(`${API_URL}/api/portfolio/delete-projects`, {
         _id: item._id,
       });
       dispatch(HideLoading());

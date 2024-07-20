@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ReloadData, ShowLoading } from "../../Redux/rootSlice";
+import API_URL from "../../config/api";
 
 const AdminContact = () => {
   const { portfolioData, reloadData } = useSelector((state) => state.root);
@@ -21,7 +22,7 @@ const AdminContact = () => {
   const onFinish = async (values) => {
     try {
       dispatch(ShowLoading());
-      const res = await axios.post("/api/portfolio/update-contact", {
+      const res = await axios.post(`${API_URL}/api/portfolio/update-contact`, {
         ...values,
         _id: contact._id,
       });

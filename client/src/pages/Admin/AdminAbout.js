@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ShowLoading } from "../../Redux/rootSlice";
+import API_URL from "../../config/api";
 
 const AdminAbout = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const AdminAbout = () => {
               .map((skill) => skill.trim())
               .join(", ")
           : values.skills;
-      const res = await axios.post("/api/portfolio/update-about", {
+      const res = await axios.post(`${API_URL}/api/portfolio/update-about`, {
         ...values,
         _id: portfolioData.about._id,
       });
