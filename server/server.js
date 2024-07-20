@@ -1,10 +1,21 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const cors = require("cors"); // Import cors
 const connectToDB = require("./config/dbConfig");
 const portfolioRoutes = require("./routes/portfolioRoutes");
 
 const app = express();
+
+// Configure CORS
+app.use(
+  cors({
+    origin: "https://mern-portfolio-client-rt8c.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use("/api/portfolio", portfolioRoutes);
 
