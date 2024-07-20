@@ -7,7 +7,6 @@ const portfolioRoutes = require("./routes/portfolioRoutes");
 
 const app = express();
 
-// CORS configuration
 const whitelist = [
   "http://localhost:3000",
   "https://mern-portfolio-client-rt8c.onrender.com",
@@ -26,9 +25,16 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use("/api/portfolio", portfolioRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = process.env.PORT || 3690;
 
