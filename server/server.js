@@ -10,7 +10,7 @@ const app = express();
 // CORS configuration
 const whitelist = [
   "http://localhost:3000",
-  "https://mern-portfolio-client-rt8c.onrender.com",
+  "https://mern-portfolio-client-rt8c.onrender.com/",
 ];
 
 const corsOptions = {
