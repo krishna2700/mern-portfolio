@@ -30,17 +30,21 @@ app.use("/api/portfolio", portfolioRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..", "client", "build")));
-
   app.get("*", (req, res) => {
-    console.log("Request received for:", req.originalUrl);
+    console.log(`Serving file for route: ${req.url}`);
     res.sendFile(
-      path.resolve(__dirname, "..", "client", "build", "index.html")
+      path.resolve(__dirname, "..", "client", "build", "index.html"),
+      (err) => {
+        if (err) {
+          console.error(`Error serving file: ${err}`);
+          res.status(500).send("Server Error");
+        }
+      }
     );
   });
 }
 
 const PORT = process.env.PORT || 3690;
-
 connectToDB();
 
 app.listen(PORT, () => {
