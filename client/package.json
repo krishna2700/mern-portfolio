@@ -43,6 +43,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.4"
-  },
-  "proxy": "https://mern-portfolio-server-tbif.onrender.com"
+  }
 }

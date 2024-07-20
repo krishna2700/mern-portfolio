@@ -7,6 +7,7 @@ import Loader from "./components/Loader";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Login from "./pages/Admin/Login";
+import API_URL from "./config/api";
 
 function App() {
   const { loading, reloadData } = useSelector((state) => state.root);
@@ -14,7 +15,9 @@ function App() {
 
   const getPortfolioData = async () => {
     try {
-      const res = await axios.get("/api/portfolio/get-portfolio-data");
+      const res = await axios.get(
+        `${API_URL}/api/portfolio/get-portfolio-data`
+      );
       dispatch(setPortfolioData(res.data));
       dispatch(ReloadData(false));
       console.log(res.data);
